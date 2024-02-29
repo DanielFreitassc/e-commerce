@@ -104,3 +104,29 @@
 # Deixe o padrão e clique em avançar 
 
 ![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/0de444c3-aea4-4579-862e-495e2a81507d)
+
+# Agora vamos baixar o gerenciado de banco de dados SSMS
+
+## [LINK](https://learn.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+
+![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/fcc3a1b5-723e-4c71-be41-55cb07a4d78f)
+
+# De um duplo clique no arquivo 
+
+![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/0a7826d6-3608-452e-af75-bd1ac5985a98)
+
+# Selecione o diretorio de sua preferencia 
+
+![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/dd9ab0f6-c1fa-4073-b53c-c156580f2830)
+
+# Pronto instalado
+
+![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/5d1917f6-3daa-464c-a99c-d21ffe5c0194)
+
+# Pesquise por ssms e abra 
+
+![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/6658e529-0b26-4d0c-b584-d294eba3812c)
+
+# Agora é só clicar em conectar 
+
+![image](https://github.com/DanielFreitassc/BancoDeDadosQuintaFeira/assets/129224303/61833f1e-c8a5-48d6-bd0f-1544c5b600b8)
