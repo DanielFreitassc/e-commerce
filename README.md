@@ -50,3 +50,25 @@ GROUP BY person_id
 having count(*) = 3 AND event_name = "SQL Symphony Concert" AND date like "%201712%";
 
 ```
+# Aula 3 
+```
+SELECT * 
+FROM aluno INNER JOIN notebook
+ON aluno.code_note=notebook.cod
+
+SELECT * 
+FROM aluno LEFT JOIN notebook
+ON aluno.code_note=notebook.cod
+
+SELECT * 
+FROM aluno RIGHT JOIN notebook
+ON aluno.code_note=notebook.cod
+
+SELECT * 
+FROM aluno FULL JOIN notebook
+ON aluno.code_note=notebook.cod
+
+SELECT * 
+FROM aluno CROSS JOIN notebook
+ON aluno.code_note=notebook.cod
+```
