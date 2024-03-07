@@ -74,7 +74,9 @@ ON aluno.code_note=notebook.cod
 
 ```
 
-# Exercício 01
+# 1. (Criar com CTE e subconsulta) Utilizando a linguagem SQL, execute consultas que possam responder a
+seguinte questão: Qual(is) Carro(s) possui(em) mais sinistros cadastrados?
+
 ```
 WITH placaSinistro as (
 	SELECT placa FROM sinistro
@@ -85,10 +87,14 @@ SELECT placa, count(*) as num FROM placaSinistro
 group by placa
 order by num desc
 
-
+```
+# 2. Quais clientes cadastrados possuem letra “a” no meio e não no final? 
+```
 SELECT nome FROM cliente
 WHERE nome like '%a%' AND nome LIKE 'a%'
-
+```
+# 3. (Criar com JOIN, subconsultas correlacionada e aninhada) Quais clientes não possuem apólice?
+```
 SELECT nome FROM cliente c
 WHERE nome  NOT IN (
 	SELECT nome FROM apolice a
@@ -97,12 +103,20 @@ WHERE nome  NOT IN (
 
 SELECT nome FROM cliente LEFT JOIN apolice
 ON cliente.cod_cliente=apolice.cod_apolice
+```
 
+
+5. Quais clientes temos hoje na base de dados?
+```
 SELECT  * FROM cliente
-
+```
+6. Quais carros possuem a placa iniciando com as letras L ou M
+```
 SELECT  placa FROM carro
 WHERE placa LIKE 'L%' OR placa LIKE 'M%'
-
+```
+# 7. Quais são os sinistros que ocorreram em 2022?
+```
 SELECT data_sinistro FROM sinistro
 WHERE data_sinistro 
 ```
