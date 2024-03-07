@@ -124,6 +124,7 @@ WHERE placa LIKE 'L%' OR placa LIKE 'M%'
 ```
 # 7. Quais são os sinistros que ocorreram em 2022?
 ```
-SELECT data_sinistro FROM sinistro
-WHERE data_sinistro 
+SELECT * FROM sinistro 
+WHERE YEAR(data_sinistro) = 2022 
+ORDER BY data_sinistro;
 ```
