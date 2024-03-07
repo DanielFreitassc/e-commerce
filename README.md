@@ -72,6 +72,10 @@ SELECT *
 FROM aluno CROSS JOIN notebook
 ON aluno.code_note=notebook.cod
 
+```
+
+# Exercício 01
+```
 WITH placaSinistro as (
 	SELECT placa FROM sinistro
 	WHERE placa = placa
