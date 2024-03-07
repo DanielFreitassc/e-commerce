@@ -106,11 +106,11 @@ ON cliente.cod_cliente=apolice.cod_apolice
 ```
 
 
-5. Quais clientes temos hoje na base de dados?
+# 5. Quais clientes temos hoje na base de dados?
 ```
 SELECT  * FROM cliente
 ```
-6. Quais carros possuem a placa iniciando com as letras L ou M
+# 6. Quais carros possuem a placa iniciando com as letras L ou M
 ```
 SELECT  placa FROM carro
 WHERE placa LIKE 'L%' OR placa LIKE 'M%'
