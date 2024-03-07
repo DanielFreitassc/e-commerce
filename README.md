@@ -101,11 +101,18 @@ WHERE nome  NOT IN (
 	WHERE c.cod_cliente = a.cod_cliente
 )
 
-SELECT nome FROM cliente LEFT JOIN apolice
-ON cliente.cod_cliente=apolice.cod_apolice
+SELECT nome 
+FROM cliente 
+LEFT JOIN apolice 
+ON cliente.cod_cliente = apolice.cod_cliente 
+WHERE apolice.cod_cliente IS NULL;
 ```
-
-
+# 4. (Criar com JOIN, subconsultas correlacionada e aninhada) Quais carros não possuem apólice?
+```
+SELECT *
+FROM carro
+WHERE placa NOT IN (SELECT placa FROM apolice);
+```
 # 5. Quais clientes temos hoje na base de dados?
 ```
 SELECT  * FROM cliente
