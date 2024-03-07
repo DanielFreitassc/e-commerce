@@ -71,4 +71,34 @@ ON aluno.code_note=notebook.cod
 SELECT * 
 FROM aluno CROSS JOIN notebook
 ON aluno.code_note=notebook.cod
+
+WITH placaSinistro as (
+	SELECT placa FROM sinistro
+	WHERE placa = placa
+)
+
+SELECT placa, count(*) as num FROM placaSinistro
+group by placa
+order by num desc
+
+
+SELECT nome FROM cliente
+WHERE nome like '%a%' AND nome LIKE 'a%'
+
+SELECT nome FROM cliente c
+WHERE nome  NOT IN (
+	SELECT nome FROM apolice a
+	WHERE c.cod_cliente = a.cod_cliente
+)
+
+SELECT nome FROM cliente LEFT JOIN apolice
+ON cliente.cod_cliente=apolice.cod_apolice
+
+SELECT  * FROM cliente
+
+SELECT  placa FROM carro
+WHERE placa LIKE 'L%' OR placa LIKE 'M%'
+
+SELECT data_sinistro FROM sinistro
+WHERE data_sinistro 
 ```
