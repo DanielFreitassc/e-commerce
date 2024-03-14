@@ -128,3 +128,48 @@ SELECT * FROM sinistro
 WHERE YEAR(data_sinistro) = 2022 
 ORDER BY data_sinistro;
 ```
+
+# Lista 2 
+```
+SELECT cod_apolice
+ ,cod_cliente, (SELECT nome FROM cliente WHERE  apolice.cod_cliente = cliente.cod_cliente) AS nome_do_cliente
+ ,data_inicio_vigencia
+ ,data_fim_vigencia
+ ,valor_cobertura
+ ,valor_franquia
+ ,placa
+ FROM apolice
+ORDER BY data_fim_vigencia ASC
+GO
+
+SELECT cod_apolice
+ ,apolice.cod_cliente,
+ cliente.nome AS nome_do_cliente
+ ,data_inicio_vigencia
+ ,data_fim_vigencia
+ ,valor_cobertura
+ ,valor_franquia
+ ,placa
+ FROM apolice
+ INNER JOIN
+ cliente
+ ON  cliente.cod_cliente = apolice.cod_cliente
+ORDER BY data_fim_vigencia ASC
+GO
+
+SELECT  *, ROW_NUMBER() OVER(ORDER BY LOCAL_SINISTRO) AS ordem
+FROM sinistro 
+ORDER BY local_sinistro
+GO
+
+SELECT * ,RANK() OVER(ORDER BY local_sinistro) AS ordem
+FROM sinistro
+ORDER BY local_sinistro
+GO
+
+SELECT * , DENSE_RANK() OVER(ORDER BY local_sinistro) AS ordem
+FROM sinistro
+ORDER BY local_sinistro
+GO
+
+```
