@@ -1,3 +1,4 @@
+```
  SELECT cod_apolice
  ,(SELECT nome FROM cliente WHERE cliente.cod_cliente = apolice.cod_cliente) AS nm_clinte
  ,data_inicio_vigencia
@@ -51,3 +52,4 @@ WHERE placa in (
 		SELECT MAX(qtde)
 		FROM cte1))
 go
+```
