@@ -6,10 +6,11 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 
 ```json
 {
-  "name": "nome do produto",
-  "description": "descrição do produto",
-  "price": 200,
-  "quantity": 10
+    "name":"Caixa de leite",
+    "price": 12.44,
+    "description":"2L",
+    "validity": "07/05/2024",
+    "image":"https://image.jpg"
 }
 ```
 
@@ -20,15 +21,16 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 ### 1. **Criar Produto**
 
 - **Método:** `POST`
-- **Rota:** `/product`
+- **Rota:** `/products`
 - **Descrição:** Cria um novo produto.
 - **Request Body:**
   ```json
   {
-    "name": "nome do produto",
-    "description": "descrição do produto",
-    "price": 200,
-    "quantity": 10
+    "name":"Caixa de leite",
+    "price": 12.44,
+    "description":"2L",
+    "validity": "07/05/2024",
+    "image":"https://image.jpg"
   }
   ```
 - **Response:**
@@ -37,10 +39,11 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
   ```json
   {
     "id": 1,
-    "name": "nome do produto",
-    "description": "descrição do produto",
-    "price": 200,
-    "quantity": 10
+    "name":"Caixa de leite",
+    "price": 12.44,
+    "description":"2L",
+    "validity": "07/05/2024",
+    "image":"https://image.jpg"
   }
   ```
 
@@ -49,7 +52,7 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 ### 2. **Listar Todos os Produtos**
 
 - **Método:** `GET`
-- **Rota:** `/product`
+- **Rota:** `/products`
 - **Descrição:** Retorna uma lista de todos os produtos cadastrados.
 - **Response:**
   - **Status:** `200 OK`
@@ -58,17 +61,19 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
   [
     {
       "id": 1,
-      "name": "nome do produto",
-      "description": "descrição do produto",
-      "price": 200,
-      "quantity": 10
+      "name":"Caixa de leite",
+      "price": 12.44,
+      "description":"2L",
+      "validity": "07/05/2024",
+      "image":"https://image.jpg"
     },
     {
       "id": 2,
-      "name": "outro produto",
-      "description": "outra descrição",
-      "price": 150,
-      "quantity": 5
+      "name":"Caixa de bombom",
+      "price": 15.99,
+      "description":"200G",
+      "validity": "03/09/2025",
+      "image":"https://image.jpg"
     }
   ]
   ```
@@ -78,7 +83,7 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 ### 3. **Buscar Produto por ID**
 
 - **Método:** `GET`
-- **Rota:** `/product/{id}`
+- **Rota:** `/products/{id}`
 - **Descrição:** Retorna os detalhes de um produto específico, identificado pelo seu ID.
 - **Parâmetros de Rota:**
   - `id` (obrigatório): O ID do produto a ser buscado.
@@ -86,13 +91,14 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
   - **Status:** `200 OK`
   - **Body:** Detalhes do produto.
   ```json
-  {
-    "id": 1,
-    "name": "nome do produto",
-    "description": "descrição do produto",
-    "price": 200,
-    "quantity": 10
-  }
+    {
+      "id": 1,
+      "name":"Caixa de leite",
+      "price": 12.44,
+      "description":"2L",
+      "validity": "07/05/2024",
+      "image":"https://image.jpg"
+    }
   ```
   - **Erro:**
     - **Status:** `404 Not Found`
@@ -103,30 +109,32 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 ### 4. **Atualizar Produto**
 
 - **Método:** `PUT`
-- **Rota:** `/product/{id}`
+- **Rota:** `/products/{id}`
 - **Descrição:** Atualiza os detalhes de um produto específico.
 - **Parâmetros de Rota:**
   - `id` (obrigatório): O ID do produto a ser atualizado.
 - **Request Body:**
   ```json
-  {
-    "name": "nome atualizado",
-    "description": "descrição atualizada",
-    "price": 250,
-    "quantity": 15
-  }
+    {
+      "name":"Caixa de leite",
+      "price": 10.44,
+      "description":"2L",
+      "validity": "07/05/2024",
+      "image":"https://image.jpg"
+    }
   ```
 - **Response:**
   - **Status:** `200 OK`
   - **Body:** Detalhes do produto atualizado.
   ```json
-  {
-    "id": 1,
-    "name": "nome atualizado",
-    "description": "descrição atualizada",
-    "price": 250,
-    "quantity": 15
-  }
+    {
+      "id": 1,
+      "name":"Caixa de leite",
+      "price": 10.44,
+      "description":"2L",
+      "validity": "07/05/2024",
+      "image":"https://image.jpg"
+    }
   ```
   - **Erro:**
     - **Status:** `404 Not Found`
@@ -137,7 +145,7 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 ### 5. **Excluir Produto**
 
 - **Método:** `DELETE`
-- **Rota:** `/product/{id}`
+- **Rota:** `/products/{id}`
 - **Descrição:** Exclui um produto específico identificado pelo seu ID.
 - **Parâmetros de Rota:**
   - `id` (obrigatório): O ID do produto a ser excluído.
@@ -145,13 +153,14 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
   - **Status:** `200 OK`
   - **Body:** Detalhes do produto atualizado.
   ```json
-  {
-    "id": 1,
-    "name": "nome",
-    "description": "descrição",
-    "price": 250,
-    "quantity": 15
-  }
+    {
+      "id": 1,
+      "name":"Caixa de leite",
+      "price": 12.44,
+      "description":"2L",
+      "validity": "07/05/2024",
+      "image":"https://image.jpg"
+    }
   ```
   - **Erro:**
     - **Status:** `404 Not Found`
@@ -169,8 +178,4 @@ Esta API permite a criação, leitura, atualização e exclusão de produtos. A 
 
 ---
 
-
 Essa documentação cobre todos os métodos CRUD para a API de produtos.
-
-
-
