@@ -2,56 +2,51 @@ package com.daniel.backend.services;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.daniel.backend.dtos.ProductRecordDTO;
+import com.daniel.backend.dtos.ProductDto;
 import com.daniel.backend.mappers.ProductMapper;
 import com.daniel.backend.models.ProductEntity;
 import com.daniel.backend.repositories.ProductRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class ProductService {
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private ProductMapper productMapper;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
-    public ProductRecordDTO createProduct(ProductRecordDTO productRecordDTO) {
-        ProductEntity productEntity = productMapper.toEntity(productRecordDTO);
-        ProductEntity productEntity2 = productRepository.save(productEntity);
-        return productMapper.toDto(productEntity2);
+    public ProductDto createProduct(ProductDto productRecordDTO) {
+        return productMapper.toDto(productRepository.save(productMapper.toEntity(productRecordDTO)));
     }
 
-    public List<ProductRecordDTO> getProduct() {
-        List<ProductEntity> products = productRepository.findAll();
-        if(products.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nenhum produto cadastrado no momenot");
-        return products.stream().map(productMapper::toDto).collect(Collectors.toList());
+    public List<ProductDto> getProduct() {
+        return productRepository.findAll().stream().map(productMapper::toDto).toList();
     }
 
-    public ProductRecordDTO getById(Long id) {
+    public ProductDto getById(Long id) {
+        return productMapper.toDto(findProductOrThrow(id));
+    }
+
+    public ProductDto updateProduct(Long id, ProductDto productRecordDTO) {
+        ProductEntity productEntity = findProductOrThrow(id);
+        productMapper.updateEntity(productRecordDTO, productEntity);
+        return productMapper.toDto(productRepository.save(productEntity));
+    }
+
+    public ProductDto deleteProduct(Long id) {
+        productRepository.delete(findProductOrThrow(id));
+        return productMapper.toDto(findProductOrThrow(id));
+    }
+
+    private ProductEntity findProductOrThrow(Long id) {
         Optional<ProductEntity> product = productRepository.findById(id);
-        if(product.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nenhum produto cadastrado no momento com este ID");
-        return productMapper.toDto(product.get());
-    }
-
-    public ProductRecordDTO updateProduct(Long id, ProductRecordDTO productRecordDTO) {
-        Optional<ProductEntity> product = productRepository.findById(id);
-        if(product.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nenhum produto cadastrado no momento com este ID");
-        ProductEntity productEntity = productMapper.toEntity(productRecordDTO);
-        productEntity.setId(id);
-        ProductEntity updateProduct = productRepository.save(productEntity);
-        return productMapper.toDto(updateProduct);
-    }
-
-    public ProductRecordDTO deleteProduct(Long id) {
-        Optional<ProductEntity> product = productRepository.findById(id);
-        if(product.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nenhum produto cadastrado no momento com este ID");
-        productRepository.delete(product.get());
-        return productMapper.toDto(product.get());
+        if(product.isEmpty()) throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Nenhum produto encontrado");
+        return product.get();
     }
 }

@@ -12,40 +12,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.daniel.backend.dtos.ProductRecordDTO;
+import com.daniel.backend.dtos.ProductDto;
 import com.daniel.backend.services.ProductService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("products")
+@RequiredArgsConstructor
+@RequestMapping("/products")
 public class ProductController {
-    @Autowired
-    private ProductService productService;
-
+    private final ProductService productService;
 
     @PostMapping
-    public ProductRecordDTO createProduct(@RequestBody @Valid ProductRecordDTO productRecordDTO) {
+    public ProductDto createProduct(@RequestBody @Valid ProductDto productRecordDTO) {
         return productService.createProduct(productRecordDTO);
     }
 
     @GetMapping
-    public List<ProductRecordDTO> getProduct() {
+    public List<ProductDto> getProduct() {
         return productService.getProduct();
     }
 
     @GetMapping("{id}")
-    public ProductRecordDTO getById(@PathVariable Long id) {
+    public ProductDto getById(@PathVariable Long id) {
         return productService.getById(id);
     }
 
     @PutMapping("{id}")
-    public ProductRecordDTO updateProduct(@PathVariable Long id,@RequestBody @Valid ProductRecordDTO productRecordDTO) {
+    public ProductDto updateProduct(@PathVariable Long id,@RequestBody @Valid ProductDto productRecordDTO) {
         return productService.updateProduct(id, productRecordDTO);
     }
 
     @DeleteMapping("{id}")
-    public ProductRecordDTO deleteProduct(@PathVariable Long id) {
+    public ProductDto deleteProduct(@PathVariable Long id) {
         return productService.deleteProduct(id);
     }
  }
